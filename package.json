@@ -25,7 +25,10 @@
     "test": "vitest",
     "type-check": "tsc --noEmit",
     "lint": "eslint src/**/*.ts",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "release": "npm publish --access public",
+    "release:dry": "npm publish --dry-run",
+    "pack": "npm run build && npm pack"
   },
   "keywords": [
     "typescript",

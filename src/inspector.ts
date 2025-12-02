@@ -330,13 +330,14 @@ export class Inspector {
         background-color: ${label.backgroundColor} !important;
         color: ${label.textColor} !important;
         padding: ${label.padding} !important;
-        border-radius: ${label.borderRadius} !important;
+        border-radius: 4px 4px 0 0 !important;
         font-size: ${label.fontSize} !important;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
         white-space: nowrap !important;
         z-index: ${overlay.zIndex + 2} !important;
         pointer-events: none !important;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+        transform: translateX(-50%) translateY(-100%) !important;
       }
     `;
 
@@ -603,31 +604,31 @@ export class Inspector {
     this.floatingLabel.textContent = content;
 
     // Position label
-    const offset = label.offset;
     let top = 0;
     let left = 0;
 
     switch (label.position) {
       case 'top':
-        top = rect.top - offset - 24; // Approximate height of label
-        left = rect.left;
+        // Position label above the element, bottom edge touching top border
+        top = rect.top;
+        left = rect.left + rect.width / 2;
         break;
       case 'bottom':
-        top = rect.bottom + offset;
-        left = rect.left;
+        top = rect.bottom + label.offset;
+        left = rect.left + rect.width / 2;
         break;
       case 'left':
         top = rect.top;
-        left = rect.left - offset; // Needs width calculation for exact positioning
+        left = rect.left - label.offset;
         break;
       case 'right':
         top = rect.top;
-        left = rect.right + offset;
+        left = rect.right + label.offset;
         break;
     }
 
     // Ensure label stays within viewport
-    if (top < 0) top = rect.bottom + offset;
+    if (top < 0) top = rect.bottom + label.offset;
 
     this.floatingLabel.style.setProperty('top', `${top}px`, 'important');
     this.floatingLabel.style.setProperty('left', `${left}px`, 'important');

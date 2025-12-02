@@ -1,0 +1,46 @@
+{
+  "name": "devlens-inspector-vscode",
+  "displayName": "DevLens Inspector",
+  "description": "Element inspector for webview development in VS Code",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onCommand:devlens-inspector.activate"],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "devlens-inspector.activate",
+        "title": "DevLens: Activate Inspector"
+      },
+      {
+        "command": "devlens-inspector.deactivate",
+        "title": "DevLens: Deactivate Inspector"
+      },
+      {
+        "command": "devlens-inspector.toggle",
+        "title": "DevLens: Toggle Inspector"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "devlens-inspector.toggle",
+        "key": "ctrl+shift+i",
+        "mac": "cmd+shift+i",
+        "when": "webviewFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@vscode/vsce": "^2.0.0"
+  },
+  "dependencies": {
+    "@gobuildlabs/devlens-inspector": "^0.0.2"
+  }
+}

@@ -11,6 +11,8 @@ rollup.config.js
 .git/
 .github/
 node_modules/
+next/
+dist/
 
 # Documentation (keep README)
 *.md
