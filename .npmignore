@@ -1,0 +1,21 @@
+# Source files
+src/
+examples/
+
+# Configuration
+tsconfig.json
+rollup.config.js
+.eslintrc.json
+
+# Development
+.git/
+.github/
+node_modules/
+
+# Documentation (keep README)
+*.md
+!README.md
+
+# Misc
+.DS_Store
+*.log

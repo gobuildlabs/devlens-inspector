@@ -1,0 +1,64 @@
+{
+  "name": "@gobuildlabs/devlens-inspector",
+  "version": "0.0.2",
+  "type": "module",
+  "description": "Framework-agnostic TypeScript element inspector for web applications",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "vite build && tsc --project tsconfig.build.json --emitDeclarationOnly --outDir dist",
+    "dev": "vite build --watch",
+    "test": "vitest",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint src/**/*.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "typescript",
+    "inspector",
+    "element-picker",
+    "dom-inspector",
+    "devtools",
+    "debugging",
+    "vscode",
+    "chrome-extension",
+    "framework-agnostic",
+    "react",
+    "svelte",
+    "vue",
+    "angular"
+  ],
+  "author": "DevLens Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devlens/inspector.git"
+  },
+  "bugs": {
+    "url": "https://github.com/devlens/inspector/issues"
+  },
+  "homepage": "https://github.com/devlens/inspector#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.0",
+    "vitest": "^1.0.0"
+  }
+}

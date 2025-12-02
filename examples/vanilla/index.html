@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@devlens/inspector - Vanilla JS Example</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 40px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: #333;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      color: #667eea;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    .button:hover {
+      background: #5568d3;
+    }
+
+    .button.secondary {
+      background: #48bb78;
+    }
+
+    .button.secondary:hover {
+      background: #38a169;
+    }
+
+    .button.danger {
+      background: #f56565;
+    }
+
+    .button.danger:hover {
+      background: #e53e3e;
+    }
+
+    .demo-section {
+      margin: 30px 0;
+      padding: 20px;
+      background: #f7fafc;
+      border-radius: 8px;
+    }
+
+    .demo-section h2 {
+      margin-bottom: 15px;
+      font-size: 20px;
+      color: #2d3748;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border: 2px solid #e2e8f0;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #667eea;
+    }
+
+    .result {
+      margin-top: 30px;
+      padding: 20px;
+      background: #1a202c;
+      color: #68d391;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .result pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #2d3748;
+    }
+
+    .input-group input,
+    .input-group select {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #e2e8f0;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .input-group input:focus,
+    .input-group select:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>@devlens/inspector</h1>
+    <p class="subtitle">Vanilla JavaScript Example</p>
+
+    <div>
+      <button class="button" id="activate-btn">🔍 Activate Inspector</button>
+      <button class="button secondary" id="deactivate-btn">⏸️ Deactivate</button>
+      <button class="button danger" id="clear-btn">🗑️ Clear Results</button>
+    </div>
+
+    <div class="demo-section">
+      <h2>📝 Try Inspecting These Elements</h2>
+
+      <div class="card">
+        <h3>Sample Card 1</h3>
+        <p>This is a sample card with some text. Try clicking on different parts!</p>
+        <button class="button">Click Me</button>
+      </div>
+
+      <div class="card">
+        <h3>Sample Card 2</h3>
+        <div class="input-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" placeholder="Enter your name">
+        </div>
+        <div class="input-group">
+          <label for="theme">Choose Theme</label>
+          <select id="theme">
+            <option>Light</option>
+            <option>Dark</option>
+            <option>Auto</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Sample Card 3</h3>
+        <p>Click on this paragraph to see its details.</p>
+        <a href="#" style="color: #667eea; text-decoration: none; font-weight: 500;">
+          Or click this link
+        </a>
+      </div>
+    </div>
+
+    <div class="result" id="result">
+      <strong>Inspector Output</strong>
+      <pre id="output">Click "Activate Inspector" to start...</pre>
+    </div>
+  </div>
+
+  <!-- Include the library (replace with actual path) -->
+  <script type="module">
+    // In a real application, you would import from npm:
+    // import { Inspector } from '@devlens/inspector';
+
+    // For this demo, we'll simulate the import
+    // You would need to build the library and reference the dist file
+
+    // Simulated output
+    const output = document.getElementById('output');
+    const activateBtn = document.getElementById('activate-btn');
+    const deactivateBtn = document.getElementById('deactivate-btn');
+    const clearBtn = document.getElementById('clear-btn');
+
+    let inspector;
+
+    function log(message, data = null) {
+      const timestamp = new Date().toLocaleTimeString();
+      const entry = `[${timestamp}] ${message}${data ? '\n' + JSON.stringify(data, null, 2) : ''}`;
+      output.textContent = entry + '\n\n' + output.textContent;
+    }
+
+    // Create inspector instance
+    // In production, this would be:
+    // inspector = new Inspector({ ... });
+
+    log('Inspector library loaded!');
+    log('Configuration:', {
+      crosshair: { enabled: true, color: '#ff0000' },
+      highlight: { borderColor: 'red', borderWidth: 2 },
+      behavior: { autoDeactivate: false }
+    });
+
+    activateBtn.addEventListener('click', () => {
+      log('✅ Inspector activated! Click any element below...');
+      // inspector.activate();
+    });
+
+    deactivateBtn.addEventListener('click', () => {
+      log('⏸️ Inspector deactivated');
+      // inspector.deactivate();
+    });
+
+    clearBtn.addEventListener('click', () => {
+      output.textContent = 'Results cleared. Click "Activate Inspector" to start...';
+    });
+
+    // Simulated click handler
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.button, .card, input, select, a')) {
+        log('🎯 Element clicked!', {
+          tagName: e.target.tagName,
+          className: e.target.className,
+          id: e.target.id || '(no id)',
+          innerText: e.target.innerText?.substring(0, 50) || '(no text)'
+        });
+      }
+    });
+  </script>
+
+  <script>
+    // Note: To use the actual library, you would:
+    // 1. npm install @devlens/inspector
+    // 2. Use a bundler (webpack, rollup, vite) or import from CDN
+    // 3. Replace the simulated code above with actual Inspector usage
+  </script>
+</body>
+</html>
