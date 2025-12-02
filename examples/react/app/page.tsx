@@ -11,6 +11,19 @@ export default function Home() {
   useEffect(() => {
     // Only runs on client side
     inspectorRef.current = new Inspector({
+      styles: {
+        crosshair: {
+          color: '#a855f7', // Purple-500
+        },
+        highlight: {
+          borderColor: '#a855f7', // Purple-500
+          backgroundColor: 'rgba(168, 85, 247, 0.1)', // Purple with 10% opacity
+        },
+        label: {
+          backgroundColor: '#a855f7', // Purple-500
+          textColor: '#ffffff',
+        },
+      },
       onElementClick: (element) => {
         console.log('Inspected Element:', {
           tagName: element.tagName,

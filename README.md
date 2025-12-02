@@ -10,6 +10,10 @@
 
 **@devlens/inspector** enables visual element inspection with crosshairs, highlights, and floating labels. Perfect for building developer tools, browser extensions, testing utilities, and debugging interfaces.
 
+## 🎥 Demo
+
+![DevLens Inspector Demo](./assets/demo.gif)
+
 ---
 
 ## ✨ Features
