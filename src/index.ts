@@ -1,5 +1,5 @@
 /**
- * @devlens/inspector
+ * @gobuildlabs/devlens-inspector
  * Framework-agnostic TypeScript element inspector for web applications
  *
  * @author DevLens Team
