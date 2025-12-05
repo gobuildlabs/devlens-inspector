@@ -1,14 +1,14 @@
-# @devlens/inspector
+# @gobuildlabs/devlens-inspector
 
 > 🔍 A lightweight, framework-agnostic TypeScript library for visual element inspection on web pages
 
 [![npm version](https://badge.fury.io/js/@gobuildlabs%2Fdevlens-inspector.svg)](https://www.npmjs.com/package/@gobuildlabs/devlens-inspector)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Bundle Size](https://img.shields.io/bundlephobia/minzip/@devlens/inspector)](https://www.npmjs.com/package/@gobuildlabs/devlens-inspector)
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/@gobuildlabs/devlens-inspector)](https://www.npmjs.com/package/@gobuildlabs/devlens-inspector)
 
 
-**@devlens/inspector** enables visual element inspection with crosshairs, highlights, and floating labels. Perfect for building developer tools, browser extensions, testing utilities, and debugging interfaces.
+**@gobuildlabs/devlens-inspector** enables visual element inspection with crosshairs, highlights, and floating labels. Perfect for building developer tools, browser extensions, testing utilities, and debugging interfaces.
 
 ## 🎥 Demo
 
@@ -33,15 +33,15 @@
 ## 📦 Installation
 
 ```bash
-npm install @devlens/inspector
+npm install @gobuildlabs/devlens-inspector
 ```
 
 ```bash
-yarn add @devlens/inspector
+yarn add @gobuildlabs/devlens-inspector
 ```
 
 ```bash
-pnpm add @devlens/inspector
+pnpm add @gobuildlabs/devlens-inspector
 ```
 
 ---
@@ -49,7 +49,7 @@ pnpm add @devlens/inspector
 ## 🚀 Quick Start
 
 ```typescript
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 
 const inspector = new Inspector({
   onElementClick: (element) => {
@@ -79,7 +79,7 @@ Perfect for Chrome extension content scripts:
 
 ```typescript
 // content-script.ts
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 
 let inspector: Inspector;
 
@@ -119,7 +119,7 @@ chrome.runtime.onMessage.addListener((message) => {
 Same as Chrome, just use `browser.*` API:
 
 ```typescript
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 
 browser.runtime.onMessage.addListener((message) => {
   if (message.type === 'ACTIVATE_INSPECTOR') {
@@ -146,7 +146,7 @@ browser.runtime.onMessage.addListener((message) => {
 Uses the same Chrome extension API:
 
 ```typescript
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 // Same code as Chrome extensions
 ```
 
@@ -160,7 +160,7 @@ import { Inspector } from '@devlens/inspector';
 Works with Safari Web Extensions:
 
 ```typescript
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 
 browser.runtime.onMessage.addListener((message) => {
   // Same WebExtensions API as Firefox
@@ -179,7 +179,7 @@ browser.runtime.onMessage.addListener((message) => {
 <summary><strong>React</strong></summary>
 
 ```tsx
-import { Inspector, type InspectedElement } from '@devlens/inspector';
+import { Inspector, type InspectedElement } from '@gobuildlabs/devlens-inspector';
 import { useEffect, useRef, useState } from 'react';
 
 function ElementInspector() {
@@ -239,7 +239,7 @@ function ElementInspector() {
 ```tsx
 'use client';
 
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 import { useEffect, useRef } from 'react';
 
 export default function InspectorButton() {
@@ -289,7 +289,7 @@ export default function Page() {
 
 ```svelte
 <script lang="ts">
-  import { Inspector, type InspectedElement } from '@devlens/inspector';
+  import { Inspector, type InspectedElement } from '@gobuildlabs/devlens-inspector';
   import { onMount, onDestroy } from 'svelte';
 
   let inspector: Inspector;
@@ -347,7 +347,7 @@ export default function Page() {
 </template>
 
 <script setup lang="ts">
-import { Inspector, type InspectedElement } from '@devlens/inspector';
+import { Inspector, type InspectedElement } from '@gobuildlabs/devlens-inspector';
 import { ref, onMounted, onUnmounted } from 'vue';
 
 const selectedElement = ref<InspectedElement | null>(null);
@@ -381,7 +381,7 @@ function activate() {
 
 ```typescript
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Inspector, InspectedElement } from '@devlens/inspector';
+import { Inspector, InspectedElement } from '@gobuildlabs/devlens-inspector';
 
 @Component({
   selector: 'app-inspector',
@@ -424,7 +424,7 @@ export class InspectorComponent implements OnInit, OnDestroy {
 <summary><strong>Solid.js</strong></summary>
 
 ```tsx
-import { Inspector, type InspectedElement } from '@devlens/inspector';
+import { Inspector, type InspectedElement } from '@gobuildlabs/devlens-inspector';
 import { createSignal, onMount, onCleanup } from 'solid-js';
 
 function InspectorComponent() {
@@ -467,7 +467,7 @@ function InspectorComponent() {
 <summary><strong>Preact</strong></summary>
 
 ```tsx
-import { Inspector, type InspectedElement } from '@devlens/inspector';
+import { Inspector, type InspectedElement } from '@gobuildlabs/devlens-inspector';
 import { useEffect, useRef, useState } from 'preact/hooks';
 
 function InspectorComponent() {
@@ -500,7 +500,7 @@ function InspectorComponent() {
 **No framework needed!**
 
 ```javascript
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 
 const inspector = new Inspector({
   onElementClick: (element) => {
@@ -526,7 +526,7 @@ document.getElementById('inspect-btn').addEventListener('click', () => {
 <summary><strong>Vite</strong></summary>
 
 ```typescript
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 // Works out of the box with Vite
 ```
 
@@ -538,7 +538,7 @@ import { Inspector } from '@devlens/inspector';
 <summary><strong>Webpack</strong></summary>
 
 ```typescript
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 // Works with Webpack 5+ (ESM support)
 ```
 
@@ -550,7 +550,7 @@ import { Inspector } from '@devlens/inspector';
 <summary><strong>Parcel</strong></summary>
 
 ```typescript
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 // Works out of the box
 ```
 
@@ -562,7 +562,7 @@ import { Inspector } from '@devlens/inspector';
 <summary><strong>Rollup</strong></summary>
 
 ```typescript
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 // Native ESM support
 ```
 
@@ -574,7 +574,7 @@ import { Inspector } from '@devlens/inspector';
 <summary><strong>esbuild</strong></summary>
 
 ```typescript
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 // Fast bundling support
 ```
 
@@ -590,7 +590,7 @@ import { Inspector } from '@devlens/inspector';
 <summary><strong>TanStack Query (React Query)</strong></summary>
 
 ```tsx
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useRef, useEffect } from 'react';
 
@@ -629,7 +629,7 @@ function InspectorWithQuery() {
 <summary><strong>TanStack Router</strong></summary>
 
 ```tsx
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 import { useRouter } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 
@@ -661,7 +661,7 @@ function RouteInspector() {
 <summary><strong>TanStack Table</strong></summary>
 
 ```tsx
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 import { useReactTable } from '@tanstack/react-table';
 
 function TableWithInspector() {
@@ -703,7 +703,7 @@ function TableWithInspector() {
 **Renderer Process**:
 
 ```typescript
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 
 const inspector = new Inspector({
   onElementClick: (element) => {
@@ -723,7 +723,7 @@ inspector.activate();
 <summary><strong>Tauri</strong></summary>
 
 ```typescript
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 import { invoke } from '@tauri-apps/api/tauri';
 
 const inspector = new Inspector({
@@ -742,7 +742,7 @@ const inspector = new Inspector({
 <summary><strong>NW.js</strong></summary>
 
 ```typescript
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 
 const inspector = new Inspector({
   onElementClick: (element) => {
@@ -766,7 +766,7 @@ const inspector = new Inspector({
 **Webview Content**:
 
 ```typescript
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 
 const vscode = acquireVsCodeApi();
 
@@ -801,7 +801,7 @@ window.addEventListener('message', (event) => {
 Works in embedded browser panels:
 
 ```typescript
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 
 const inspector = new Inspector({
   onElementClick: (element) => {
@@ -830,7 +830,7 @@ test('inspect elements during test', async ({ page }) => {
   await page.addScriptTag({
     type: 'module',
     content: `
-      import { Inspector } from '@devlens/inspector';
+      import { Inspector } from '@gobuildlabs/devlens-inspector';
       window.inspector = new Inspector({
         onElementClick: (element) => {
           window.lastInspected = element;
@@ -880,7 +880,7 @@ const page = await browser.newPage();
 
 await page.evaluateOnNewDocument(() => {
   // Inject inspector into page context
-  import('@devlens/inspector').then(({ Inspector }) => {
+  import('@gobuildlabs/devlens-inspector').then(({ Inspector }) => {
     window.inspector = new Inspector({
       onElementClick: (element) => console.log(element)
     });
@@ -909,7 +909,7 @@ await page.evaluateOnNewDocument(() => {
 <button id="inspect-btn">🔍 Inspect Element</button>
 
 <script>
-  import { Inspector } from '@devlens/inspector';
+  import { Inspector } from '@gobuildlabs/devlens-inspector';
 
   const inspector = new Inspector({
     onElementClick: (element) => {
@@ -931,7 +931,7 @@ await page.evaluateOnNewDocument(() => {
 <summary><strong>Gatsby</strong></summary>
 
 ```tsx
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 import { useEffect, useRef } from 'react';
 
 export default function InspectorPage() {
@@ -955,7 +955,7 @@ export default function InspectorPage() {
 <summary><strong>Remix</strong></summary>
 
 ```tsx
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 import { useEffect, useRef } from 'react';
 
 export default function InspectorRoute() {
@@ -984,7 +984,7 @@ Add to your template:
 <button id="inspect">Inspect</button>
 
 <script type="module">
-  import { Inspector } from '@devlens/inspector';
+  import { Inspector } from '@gobuildlabs/devlens-inspector';
 
   const inspector = new Inspector({
     onElementClick: (el) => console.log(el)
@@ -1010,7 +1010,7 @@ javascript:(function(){
   const script = document.createElement('script');
   script.type = 'module';
   script.textContent = `
-    import { Inspector } from 'https://unpkg.com/@devlens/inspector';
+    import { Inspector } from 'https://unpkg.com/@gobuildlabs/devlens-inspector';
     const inspector = new Inspector({
       onElementClick: (el) => alert(el.selector)
     });
@@ -1028,7 +1028,7 @@ javascript:(function(){
 ```javascript
 // Paste in console
 const script = document.createElement('script');
-script.src = 'https://unpkg.com/@devlens/inspector';
+script.src = 'https://unpkg.com/@gobuildlabs/devlens-inspector';
 document.head.appendChild(script);
 
 // Then use it
@@ -1042,7 +1042,7 @@ inspector.activate();
 <summary><strong>Embedded Iframes</strong></summary>
 
 ```typescript
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 
 // Works inside iframes
 const inspector = new Inspector({
@@ -1062,7 +1062,7 @@ const inspector = new Inspector({
 <summary><strong>Web Components</strong></summary>
 
 ```typescript
-import { Inspector } from '@devlens/inspector';
+import { Inspector } from '@gobuildlabs/devlens-inspector';
 
 class InspectorElement extends HTMLElement {
   private inspector: Inspector;
@@ -1215,7 +1215,7 @@ import type {
   HighlightStyles,
   LabelStyles,
   OverlayStyles
-} from '@devlens/inspector';
+} from '@gobuildlabs/devlens-inspector';
 ```
 
 ---
@@ -1306,7 +1306,7 @@ SOFTWARE.
 ## 🔗 Links
 
 - **[GitHub Repository](https://github.com/devlens/inspector)**
-- **[NPM Package](https://www.npmjs.com/package/@devlens/inspector)**
+- **[NPM Package](https://www.npmjs.com/package/@gobuildlabs/devlens-inspector)**
 - **[Issue Tracker](https://github.com/devlens/inspector/issues)**
 - **[Changelog](https://github.com/devlens/inspector/releases)**
 
